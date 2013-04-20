@@ -248,9 +248,14 @@ struct private_handle_t : public native_handle {
         // ints
         int     magic;
         int     flags;
+#ifdef QCOM_BSP_CAMERA_ABI_HACK
+        int     bufferType;
+#endif
         int     size;
         int     offset;
+#ifndef QCOM_BSP_CAMERA_ABI_HACK
         int     bufferType;
+#endif
         int     base;
         // The gpu address mapped into the mmu.
         // If using ashmem, set to 0, they don't care
@@ -270,8 +275,16 @@ struct private_handle_t : public native_handle {
         private_handle_t(int fd, int size, int flags, int bufferType,
                          int format,int width, int height) :
             fd(fd), genlockHandle(-1), magic(sMagic),
-            flags(flags), size(size), offset(0),
-            bufferType(bufferType), base(0), gpuaddr(0),
+            flags(flags),
+#ifdef QCOM_BSP_CAMERA_ABI_HACK
+            bufferType(bufferType),
+#endif
+            size(size), offset(0),
+#ifndef QCOM_BSP_CAMERA_ABI_HACK
+            bufferType(bufferType),
+#endif
+	    
+            base(0), gpuaddr(0),
             pid(getpid()), format(format),
             width(width), height(height), genlockPrivFd(-1)
         {
