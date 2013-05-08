@@ -48,6 +48,10 @@ namespace android {
 ANDROID_SINGLETON_STATIC_INSTANCE(qdutils::QCCompositionType);
 }
 
+#ifndef ION_ADSP_HEAP_ID
+#define ION_ADSP_HEAP_ID ION_CAMERA_HEAP_ID
+#endif
+
 using namespace gralloc;
 using namespace qdutils;
 
