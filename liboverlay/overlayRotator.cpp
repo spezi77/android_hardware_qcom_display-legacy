@@ -18,6 +18,10 @@
 #include "overlayRotator.h"
 #include "overlayUtils.h"
 
+#ifndef QCOM_NO_SECURE_PLAYBACK
+#define QCOM_NO_SECURE_PLAYBACK 1
+#endif
+
 namespace ovutils = overlay::utils;
 
 namespace overlay {
