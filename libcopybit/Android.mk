@@ -21,7 +21,7 @@ LOCAL_COPY_HEADERS            := copybit.h copybit_priv.h
 #Copy the headers regardless of whether copybit is built
 include $(BUILD_COPY_HEADERS)
 
-LOCAL_MODULE                  := copybit.$(TARGET_BOARD_PLATFORM)
+LOCAL_MODULE                  := copybit.qsd8k
 LOCAL_MODULE_PATH             := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_MODULE_TAGS             := optional
 LOCAL_C_INCLUDES              := $(common_includes) $(kernel_includes)
@@ -35,13 +35,6 @@ ifeq ($(TARGET_USES_C2D_COMPOSITION),true)
     LOCAL_SRC_FILES := copybit_c2d.cpp software_converter.cpp
     include $(BUILD_SHARED_LIBRARY)
 else
-    ifneq ($(TARGET_BOARD_PLATFORM),msm7x30)
-        ifeq ($(TARGET_BOARD_PLATFORM),qsd8k)
-            LOCAL_CFLAGS += -DCOPYBIT_QSD8K=1
-        else
-            LOCAL_CFLAGS += -DCOPYBIT_MSM7K=1
-        endif
-            LOCAL_SRC_FILES := software_converter.cpp copybit.cpp
-            include $(BUILD_SHARED_LIBRARY)
-    endif
+    LOCAL_SRC_FILES := software_converter.cpp copybit.cpp
+    include $(BUILD_SHARED_LIBRARY)
 endif

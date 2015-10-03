@@ -42,15 +42,8 @@
 
 /******************************************************************************/
 
-#if defined(COPYBIT_MSM7K)
 #define MAX_SCALE_FACTOR    (4)
 #define MAX_DIMENSION       (4096)
-#elif defined(COPYBIT_QSD8K)
-#define MAX_SCALE_FACTOR    (4)
-#define MAX_DIMENSION       (4096)
-#else
-#error "Unsupported MDP version"
-#endif
 
 /******************************************************************************/
 
