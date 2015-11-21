@@ -24,7 +24,10 @@
 #include "egl_handles.h"
 #include <dlfcn.h>
 
+namespace android {
 ANDROID_SINGLETON_STATIC_INSTANCE(qdutils::eglHandles);
+}
+
 namespace qdutils {
 
 eglHandles::eglHandles(){
