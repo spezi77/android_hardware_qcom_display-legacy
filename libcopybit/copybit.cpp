@@ -28,6 +28,7 @@
 #include <unistd.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <malloc.h>
 
 #include <sys/ioctl.h>
 #include <sys/types.h>
